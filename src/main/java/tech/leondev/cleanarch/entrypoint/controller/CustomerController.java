@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.leondev.cleanarch.core.usecase.DeleteCustomerByIdUseCase;
 import tech.leondev.cleanarch.core.usecase.FindCustomerByIdUseCase;
 import tech.leondev.cleanarch.core.usecase.InsertCustomerUseCase;
 import tech.leondev.cleanarch.core.usecase.UpdateCustomerUseCase;
@@ -19,6 +20,7 @@ public class CustomerController {
     private final InsertCustomerUseCase insertCustomerUseCase;
     private final FindCustomerByIdUseCase findCustomerByIdUseCase;
     private final UpdateCustomerUseCase updateCustomerUseCase;
+    private final DeleteCustomerByIdUseCase deleteCustomerByIdUseCase;
     private final CustomerMapper customerMapper;
 
     @PostMapping
@@ -40,6 +42,12 @@ public class CustomerController {
         var customer = customerMapper.toCustomer(customerRequest);
         customer.setIdCustomer(id);
         updateCustomerUseCase.update(customer, customerRequest.getZipCode());
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        deleteCustomerByIdUseCase.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
