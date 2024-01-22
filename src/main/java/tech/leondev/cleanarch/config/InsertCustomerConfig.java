@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import tech.leondev.cleanarch.core.usecase.impl.InsertCustomerUseCaseImpl;
 import tech.leondev.cleanarch.dataprovider.FindAddressByZipCodeImpl;
 import tech.leondev.cleanarch.dataprovider.InsertCustomerImpl;
+import tech.leondev.cleanarch.dataprovider.SendCpfForValidationImpl;
 
 @Configuration
 public class InsertCustomerConfig {
@@ -12,8 +13,9 @@ public class InsertCustomerConfig {
     @Bean
     public InsertCustomerUseCaseImpl insertCustomerUseCase(
             FindAddressByZipCodeImpl findAddressByZipCode,
-            InsertCustomerImpl insertCustomer
+            InsertCustomerImpl insertCustomer,
+            SendCpfForValidationImpl sendCpfForValidation
     ) {
-        return new InsertCustomerUseCaseImpl(findAddressByZipCode, insertCustomer);
+        return new InsertCustomerUseCaseImpl(findAddressByZipCode, insertCustomer, sendCpfForValidation);
     }
 }
