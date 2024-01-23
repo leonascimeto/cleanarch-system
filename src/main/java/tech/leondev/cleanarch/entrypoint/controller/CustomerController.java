@@ -1,6 +1,5 @@
 package tech.leondev.cleanarch.entrypoint.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +10,8 @@ import tech.leondev.cleanarch.core.usecase.UpdateCustomerUseCase;
 import tech.leondev.cleanarch.entrypoint.controller.mapper.CustomerMapper;
 import tech.leondev.cleanarch.entrypoint.controller.request.CustomerRequest;
 import tech.leondev.cleanarch.entrypoint.controller.response.CustomerResponse;
+
+import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController

@@ -1,11 +1,10 @@
 package tech.leondev.cleanarch.core.domain;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class Address {
 
-    private String string;
+    private String street;
 
     private String city;
 
@@ -14,18 +13,18 @@ public class Address {
     public Address() {
     }
 
-    public Address(String string, String city, String state) {
-        this.string = string;
+    public Address(String street, String city, String state) {
+        this.street = street;
         this.city = city;
         this.state = state;
     }
 
-    public String getString() {
-        return string;
+    public String getStreet() {
+        return street;
     }
 
-    public void setString(String string) {
-        this.string = string;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {
@@ -49,11 +48,11 @@ public class Address {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Address address = (Address) object;
-        return Objects.equals(string, address.string);
+        return Objects.equals(street, address.street);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(string);
+        return Objects.hash(street);
     }
 }
